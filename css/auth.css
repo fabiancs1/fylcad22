@@ -1,0 +1,440 @@
+/* =============================================
+   FYLCAD — auth.css
+   Estilos para login y registro
+============================================= */
+:root {
+    --bg:         #05080f;
+    --surface:    #0c1120;
+    --surface2:   #0a0f1c;
+    --border:     rgba(255,255,255,0.07);
+    --border-h:   rgba(255,255,255,0.14);
+    --accent:     #00e5c0;
+    --accent2:    #3b82f6;
+    --accent-dim: rgba(0,229,192,0.08);
+    --text:       #e8edf5;
+    --muted:      #64748b;
+    --error:      #ef4444;
+    --success:    #00e5c0;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+}
+
+/* ── Fondo ────────────────────────────────── */
+.auth-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.topo-svg {
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 700px;
+    height: 700px;
+    pointer-events: none;
+}
+
+.bg-glow {
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0,229,192,0.07) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+/* ── Wrapper centrado ─────────────────────── */
+.auth-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 28px;
+}
+
+/* ── Logo ─────────────────────────────────── */
+.auth-logo {
+    font-family: "Syne", sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-decoration: none;
+}
+.auth-logo span { color: var(--text); opacity: 0.4; }
+
+/* ── Card ─────────────────────────────────── */
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 32px;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.03);
+    animation: cardIn .5s ease forwards;
+}
+
+@keyframes cardIn {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── Header de la card ────────────────────── */
+.auth-card-header {
+    margin-bottom: 24px;
+}
+
+.auth-card-header h1 {
+    font-family: "Syne", sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+}
+
+.auth-card-header p {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 300;
+}
+
+/* ── Alertas ──────────────────────────────── */
+.alert {
+    display: flex;
+    gap: 12px;
+    padding: 13px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.alert-icon {
+    font-size: 15px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.alert-success {
+    background: rgba(0,229,192,0.08);
+    border: 1px solid rgba(0,229,192,0.2);
+    color: var(--accent);
+}
+.alert-success a { color: var(--accent); font-weight: 600; }
+
+.alert-error {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.2);
+    color: #fca5a5;
+}
+.alert-error p { margin: 0; }
+
+/* ── Formulario ───────────────────────────── */
+.auth-form { display: flex; flex-direction: column; gap: 16px; }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 13px;
+    font-size: 14px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.input-wrap input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 40px 11px 38px;
+    font-size: 14px;
+    font-family: "DM Sans", sans-serif;
+    color: var(--text);
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.input-wrap input::placeholder { color: var(--muted); opacity: 0.6; }
+
+.input-wrap input:focus {
+    border-color: rgba(0,229,192,0.4);
+    box-shadow: 0 0 0 3px rgba(0,229,192,0.07);
+}
+
+.input-wrap input:focus + .toggle-pass,
+.toggle-pass {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.5;
+    transition: opacity .2s;
+    padding: 0;
+}
+.toggle-pass:hover { opacity: 1; }
+
+/* ── Fuerza contraseña ────────────────────── */
+.pass-strength {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.pass-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 2px;
+    transition: width .3s, background .3s;
+}
+
+.pass-label {
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 3px;
+    display: block;
+    min-height: 16px;
+}
+
+/* ── Selector de plan ─────────────────────── */
+.plan-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 4px 0;
+}
+
+.plan-option {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 12px;
+    cursor: pointer;
+    transition: all .2s;
+    position: relative;
+    text-align: center;
+    background: var(--surface2);
+}
+
+.plan-option:hover:not([data-plan="premium"]) {
+    border-color: var(--border-h);
+    background: rgba(255,255,255,0.03);
+}
+
+.plan-option.active {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+    box-shadow: 0 0 0 1px rgba(0,229,192,0.15);
+}
+
+.plan-option[data-plan="premium"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.plan-badge {
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 9px;
+    color: var(--muted);
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.plan-name {
+    font-family: "Syne", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.plan-desc {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.plan-price {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+/* ── Botón submit ─────────────────────────── */
+.btn-submit {
+    width: 100%;
+    padding: 13px;
+    background: var(--accent);
+    color: #020617;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "DM Sans", sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all .2s;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+}
+
+.btn-submit:hover {
+    background: #00ffda;
+    box-shadow: 0 0 24px rgba(0,229,192,0.3);
+    transform: translateY(-1px);
+}
+
+.btn-arrow {
+    transition: transform .2s;
+    font-size: 16px;
+}
+.btn-submit:hover .btn-arrow { transform: translateX(4px); }
+
+/* ── Footer de la card ────────────────────── */
+.auth-footer {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+}
+.auth-footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+.auth-footer a:hover { text-decoration: underline; }
+
+/* ── Divisor con texto ────────────────────── */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 4px 0;
+}
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+.auth-divider span {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ── Label row (label + link olvidé pass) ─── */
+.label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.forgot-link {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s;
+}
+.forgot-link:hover { color: var(--accent); }
+
+/* ── Checkbox personalizado ───────────────── */
+.check-row { margin: -4px 0; }
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--muted);
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] { display: none; }
+
+.checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--border-h);
+    border-radius: 5px;
+    background: var(--surface2);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+}
+
+.checkbox-label input:checked + .checkbox-custom {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.checkbox-label input:checked + .checkbox-custom::after {
+    content: "✓";
+    font-size: 11px;
+    color: #020617;
+    font-weight: 700;
+}
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 480px) {
+    .auth-card { padding: 28px 20px; }
+    .plan-selector { grid-template-columns: 1fr; }
+    .topo-svg { display: none; }
+}

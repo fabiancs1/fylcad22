@@ -1,0 +1,247 @@
+/* ═══════════════════════════════════════════════
+   FYLCAD — Chatbot sin API
+   Archivo: chatbot.css
+   Ubicación: C:\xamppp\htdocs\FYLCAD\css\chatbot.css
+═══════════════════════════════════════════════ */
+
+#fylbot-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 100px;
+    z-index: 9998;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#fylbot-btn {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-left: auto;
+    font-size: 26px;
+}
+
+#fylbot-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(124, 58, 237, 0.6);
+}
+
+#fylbot-chat {
+    width: 360px;
+    height: 500px;
+    background: #0d1117;
+    border: 1px solid #2d1f4e;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    overflow: hidden;
+    animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#fylbot-header {
+    background: linear-gradient(135deg, #1e1040, #2d1f4e);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #2d1f4e;
+}
+
+#fylbot-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+#fylbot-info h4 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#fylbot-info span {
+    font-size: 11px;
+    color: #a78bfa;
+}
+
+#fylbot-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #8892a4;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0 4px;
+    transition: color 0.2s;
+}
+
+#fylbot-close:hover { color: #ffffff; }
+
+#fylbot-mensajes {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: #2d1f4e transparent;
+}
+
+#fylbot-mensajes::-webkit-scrollbar { width: 4px; }
+#fylbot-mensajes::-webkit-scrollbar-thumb { background: #2d1f4e; border-radius: 4px; }
+
+.fylbot-msg {
+    max-width: 88%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.fylbot-msg.bot {
+    background: #1a1040;
+    color: #c9d1d9;
+    border: 1px solid #2d1f4e;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.fylbot-msg.usuario {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.fylbot-categoria {
+    font-size: 10px;
+    color: #a78bfa;
+    text-align: left;
+    padding: 0 4px;
+    margin-top: -8px;
+}
+
+.fylbot-typing {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 10px 14px;
+    background: #1a1040;
+    border: 1px solid #2d1f4e;
+    border-radius: 12px;
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+    width: fit-content;
+}
+
+.fylbot-typing span {
+    width: 6px;
+    height: 6px;
+    background: #7c3aed;
+    border-radius: 50%;
+    animation: bounce 1.2s infinite;
+}
+
+.fylbot-typing span:nth-child(2) { animation-delay: 0.2s; }
+.fylbot-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-6px); }
+}
+
+#fylbot-sugerencias {
+    padding: 0 12px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.fylbot-sugerencia {
+    background: #1a1040;
+    border: 1px solid #2d1f4e;
+    color: #a78bfa;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+.fylbot-sugerencia:hover {
+    background: #2d1f4e;
+    border-color: #7c3aed;
+}
+
+#fylbot-input-area {
+    padding: 12px;
+    border-top: 1px solid #2d1f4e;
+    display: flex;
+    gap: 8px;
+    background: #0d1117;
+}
+
+#fylbot-input {
+    flex: 1;
+    background: #1a1040;
+    border: 1px solid #2d1f4e;
+    border-radius: 10px;
+    color: #c9d1d9;
+    padding: 9px 12px;
+    font-size: 13px;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+#fylbot-input:focus { border-color: #7c3aed; }
+#fylbot-input::placeholder { color: #4a5568; }
+
+#fylbot-enviar {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s, transform 0.2s;
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+#fylbot-enviar:hover { opacity: 0.85; transform: scale(1.05); }
+#fylbot-enviar:disabled { opacity: 0.4; cursor: not-allowed; }
+
+@media (max-width: 480px) {
+    #fylbot-chat { width: calc(100vw - 32px); height: 70vh; }
+    #fylbot-widget { bottom: 16px; right: 16px; }
+}
